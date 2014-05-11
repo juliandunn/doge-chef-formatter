@@ -12,6 +12,15 @@ class Chef
         @output = Dogeputter.new(out, err)
       end
 
+      # Called at the very start of a Chef Run
+      def run_start(version)
+        puts "Much Chef Client, version #{version}"
+      end
+      
+      def converge_complete
+        puts "System converged. Much resources."
+      end
+
     end
   end
 end
