@@ -1,21 +1,22 @@
-require 'chef/formatters/indentable_output_stream'
+require 'chef/formatters/base'
 
 class Chef
   module Formatters
-    class DogeableOutputStream < IndentableOutputStream
-      def initialize
-        super
+    class Dogeputter < Outputter
+      def initialize(out, err)
+        super(out, err)
         load_doge
         @current_dogeline = 0
       end
 
-      def start_line
+      # XXX color is ignored - maybe if Chef::Config[:color] is off we should load the black-and-white doge?
+      def puts(string, *colors)
         if @current_dogeline > @doge.length # no more doge
           printf("%-30s\t  ", " ")
         else
           printf("%-30s\t  ", @doge[@current_dogeline].chomp)
         end
-        super
+        @out.puts string
       end
 
       private

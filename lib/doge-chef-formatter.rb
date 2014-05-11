@@ -1,5 +1,5 @@
-# require 'chef/formatters/base'
 require 'chef/formatters/minimal'
+require 'chef/formatters/dogeputter'
 
 class Chef
   module Formatters
@@ -9,7 +9,7 @@ class Chef
 
       # Override parent class
       def initialize(out, err)
-        @output = DogeableOutputStream.new(out, err)
+        @output = Dogeputter.new(out, err)
       end
 
     end
