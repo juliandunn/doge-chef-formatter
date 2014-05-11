@@ -17,12 +17,13 @@ class Chef
           printf("%-30s\t  ", @doge[@current_dogeline].chomp)
         end
         @out.puts string
+        @current_dogeline += 1
       end
 
       private
 
       def load_doge
-        f = File.open(File.join(%w(.. data doge.txt)))
+        f = File.open(File.join(File.dirname(__FILE__), '..', '..', '..', 'data', 'doge.txt'))
         @doge = f.readlines
         f.close
       end
