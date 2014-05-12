@@ -5,14 +5,17 @@ class Chef
     class Dogeputter < Outputter
       def initialize(out, err)
         super(out, err)
-        load_doge
+        if Chef::Config[:color]
+          load_doge('doge.txt')
+        else
+          load_doge('doge-ascii.txt')
+        end
         @current_dogeline = 0
       end
 
-      # XXX color is ignored - maybe if Chef::Config[:color] is off we should load the black-and-white doge?
       def puts(string, *colors)
-        if @current_dogeline > @doge.length # no more doge
-          printf("%-30s\t  ", " ")
+        if @current_dogeline >= @doge.length # no more doge
+          printf("%-47s\t  ", " ")
         else
           printf("%-30s\t  ", @doge[@current_dogeline].chomp)
         end
@@ -22,8 +25,8 @@ class Chef
 
       private
 
-      def load_doge
-        f = File.open(File.join(File.dirname(__FILE__), '..', '..', '..', 'data', 'doge.txt'))
+      def load_doge(dogename)
+        f = File.open(File.join(File.dirname(__FILE__), '..', '..', '..', 'data', dogename))
         @doge = f.readlines
         f.close
       end
