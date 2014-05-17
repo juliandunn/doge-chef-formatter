@@ -3,7 +3,7 @@ Doge Chef Formatter
 
 So resource. Much converge. Wow.
 
-![much resources. wow](https://pic.twitter.com/ds0tXISf0P)
+[![much resources. wow](https://pbs.twimg.com/media/BnZ4M_cCQAI2r_x.jpg)]
 
 Usage
 =====
